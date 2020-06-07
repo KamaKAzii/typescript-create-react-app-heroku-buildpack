@@ -1,8 +1,10 @@
 #!/bin/bash
 
+BUILD_DIR=$1
+
 herokuEcho () { 
-  echo -----> $1
+  echo "-----> $1"
 }
 
-
-herokuEcho "compile phase beginsss in a heroku style print"
+herokuEcho "About to get NodeJS 🍢"
+mkdir $BUILD_DIRs/node
