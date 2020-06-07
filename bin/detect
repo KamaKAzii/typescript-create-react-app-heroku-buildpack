@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# this pack is valid for apps with a hello.txt in the root
+if [ -f $1/hello.txt ]; then
+  echo "Saw hello.txt"
+  exit 0
+else
+  echo "Didn't see hello.txt"
+  exit 1
+fi
