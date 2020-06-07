@@ -10,5 +10,5 @@ herokuEcho "About to get NodeJS 🍢"
 
 nodeDir=$BUILD_DIR/bin/node
 mkdir -p $nodeDir
-curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xzvf - -C $nodeDir
+curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xvf - -C $nodeDir
 herokuEcho $($nodeDir/bin/node -v)
