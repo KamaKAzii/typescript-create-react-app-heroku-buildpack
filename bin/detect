@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(find . -name tsconfig.json | wc -l) -gt 0 ]; then
+if [ $(find $1 -name tsconfig.json | wc -l) -gt 0 ]; then
   echo "-----> Found tsconfig.json."
   echo "wondering... is this on the next line?"
   exit 0
