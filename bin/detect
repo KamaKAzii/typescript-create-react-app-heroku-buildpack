@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ $(find $1 -name tsconfig.json | wc -l) -gt 0 ]; then
-  echo "-----> Found tsconfig.json."
-  echo "wondering... is this on the next line?"
+  echo "Grats! 🎉 Found tsconfig.json."
   exit 0
 else
   exit 1
