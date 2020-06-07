@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# this pack is valid for apps with a hello.txt in the root
-if [ -f $1/hello.txt ]; then
-  echo "Saw hello.txt"
+if [ $(find . -name tsconfig.json | wc -l) -gt 0 ]; then
+  echo "-----> Found tsconfig.json."
+  echo "wondering... is this on the next line?"
   exit 0
 else
-  echo "Didn't see hello.txt"
   exit 1
 fi
