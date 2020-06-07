@@ -1,5 +1,8 @@
 #!/bin/bash
 
-echo "============================"
-echo "compile phase beginsss"
-echo "============================"
+herokuEcho () { 
+  echo -----> $1
+}
+
+
+herokuEcho "compile phase beginsss in a heroku style print"
