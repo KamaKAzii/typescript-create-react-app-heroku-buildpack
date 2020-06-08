@@ -22,3 +22,4 @@ PATH="$nodeDir:$PATH"
 herokuEcho $PATH
 herokuEcho "Checking node works from PATH 🛣... "
 herokuEcho $(node -v)
+herokuEcho "Yay"
