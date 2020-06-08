@@ -6,21 +6,22 @@ herokuEcho () {
   echo "-----> $1"
 }
 
-herokuEcho "About to get NodeJS 🍢"
+# ====================================
+# Let's get NodeJS goin'! 🍢
+# ====================================
 
+herokuEcho "About to get NodeJS 🍢"
 nodeBaseDir=$BUILD_DIR/bin/node
 mkdir -p $nodeBaseDir
 curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeBaseDir
 nodePath="$nodeBaseDir/bin"
-
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
-herokuEcho $($nodePath -v)
+export PATH=$PATH:$HOME/vendor/bin
+herokuEcho "Successfully added node to PATH 🛣 🍢 🌈"
+herokuEcho "Checking node works from PATH 🛣..."
+herokuEcho "NodeJS version: $(node -v)"
+herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
-herokuEcho "Current path 🛣 "
-herokuEcho $PATH
-herokuEcho "Adding NodeJS 🍢 to PATH 🛣... "
-PATH="$nodePath:$PATH"
-herokuEcho $PATH
-herokuEcho "Checking node works from PATH 🛣... "
-herokuEcho $(node -v)
-herokuEcho "Yay"
+# ====================================
+# What to do next...
+# ====================================
