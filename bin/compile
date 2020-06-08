@@ -10,15 +10,15 @@ herokuEcho "About to get NodeJS 🍢"
 
 nodeDir=$BUILD_DIR/bin/node
 mkdir -p $nodeDir
-curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xvJf - -C $nodeDir
+curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xsvJf - -C $nodeDir
 
 herokuEcho "Successfully fetched and 
 herokuEcho $($nodeDir/bin/node -v)
 
 herokuEcho "Current path 🛣"
 herokuEcho $PATH
-herokuEcho "Adding NodeJS 🍢 to $PATH 🛣..."
+herokuEcho "Adding NodeJS 🍢 to PATH 🛣..."
 PATH="$nodeDir:$PATH"
 herokuEcho $PATH
-herokuEcho "Checking node works from $PATH 🛣..."
+herokuEcho "Checking node works from PATH 🛣..."
 herokuEcho $(node -v)
