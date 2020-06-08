@@ -1,9 +1,6 @@
 #!/bin/bash
 
 if [ $(find $1 -name tsconfig.json | wc -l) -gt 0 ]; then
-  echo "Grats! 🎉 Found tsconfig.json.\n"
-  echo "\n"
-  echo "\n"
   exit 0
 else
   exit 1
