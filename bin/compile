@@ -41,7 +41,6 @@ curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
 source ~/.bashrc
 absoluteYarnPath=$(which yarn)
 herokuEcho "I think we just installed yarn...: $(yarn -v) 📦"
-
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 
@@ -55,7 +54,7 @@ if [ -d "$CACHE_DIR/node_modules" ]
 then
   herokuEcho "Found em! 🕵🏻‍♂️ Node modules be chillin in 'ere!"
   mkdir -p "$BUILD_DIR/bar/node_modules"
-  cp "$CACHE_DIR/node_modules/*" "$BUILD_DIR/bar/node_modules"
+  cp -r "$CACHE_DIR/node_modules/*" "$BUILD_DIR/bar/node_modules"
   herokuEcho "Copied them into /bar's node moddies! ⏩ ⏩ ⏩"
 else
   needsToInstallNodeModules=1;
@@ -70,10 +69,9 @@ then
   herokuEcho "Okay that's done! 🌈 📚"
   herokuEcho "Copying the new moddies into the cache dir! 🎒"
   mkdir -p "$CACHE_DIR/node_modules"
-  cp "$CACHE_DIR/node_modules" "$BUILD_DIR/bar/node_modules/*"
+  cp -r "$CACHE_DIR/node_modules" "$BUILD_DIR/bar/node_modules/*"
   herokuEcho "Copied them to cache for next time! 📄 ⏩ ⏩ ⏩ 🎒"
 fi
-unset needsToInstallNodeModules
 
 # =====================================================
 # Time to build! 👷🏿‍♀️ 👷🏻‍♂️ 🛠 🏡 💃🏿 🍻
@@ -92,4 +90,6 @@ herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
 scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
 touch $scripts
+herokuEcho "ABS YARN PATH:..."
+herokuEcho $absoluteYarnPath
 echo "export PATH=\"$absoluteYarnPath:\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
