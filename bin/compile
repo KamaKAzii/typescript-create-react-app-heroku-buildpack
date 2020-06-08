@@ -46,4 +46,4 @@ herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
 scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
 touch $scripts
-echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $scriptss
+echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $scripts
