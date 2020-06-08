@@ -39,7 +39,6 @@ herokuEcho "NPM version: $(npm -v)"
 touch ~/.bashrc
 curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
 source ~/.bashrc
-absoluteYarnPath=$(which yarn)
 herokuEcho "I think we just installed yarn...: $(yarn -v) 📦"
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
@@ -91,5 +90,4 @@ mkdir -p $BUILD_DIR/.profile.d
 scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
 touch $scripts
 herokuEcho "ABS YARN PATH:..."
-herokuEcho $absoluteYarnPath
-echo "export PATH=\"$absoluteYarnPath:\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
+echo "export PATH=\"\$HOME/.yarn/bin:\$HOME/.config/yarn/global/node_modules/.bin:\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
