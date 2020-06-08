@@ -17,13 +17,15 @@ herokuEcho "============================================"
 # ====================================
 
 herokuEcho "About to get NodeJS 🍢"
-nodeBaseDir=$BUILD_DIR/bin/node
-mkdir -p $nodeBaseDir
-curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeBaseDir
-nodePath="$nodeBaseDir/bin"
+
+relativeNodePath="bin/node"
+absoluteNodePath="${BUILD_DIR}/${relativeNodePath}"
+mkdir -p $absoluteNodePath
+curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $absoluteNodePath
+
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
 
-PATH="$nodePath:$PATH"
+PATH="$absoluteNodePath:$PATH"
 herokuEcho "Successfully added node to PATH 🛣 🍢 🌈"
 herokuEcho "Checking node works from PATH 🛣..."
 herokuEcho "NodeJS version: $(node -v)"
@@ -33,12 +35,6 @@ herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 # Get the PATH setup for the dynos! 🧨
 # ====================================
 
-echo "-----> Building runtime environment"
+herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
-echo "export PATH=\"$nodePath:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
-herokuEcho "What's in there... nodejs.sh"
-cat $BUILD_DIR/.profile.d/nodejs.sh
-herokuEcho "DID THAT DO WAHT WE THOUGHT? hmm..."
-herokuEcho "What is home in here...: $HOME"
-herokuEcho "What is build_dir in here...: $BUILD_DIR"
-herokuEcho "Much to think about"
+echo "export PATH=\"\$HOME/$relativeNodePath:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
