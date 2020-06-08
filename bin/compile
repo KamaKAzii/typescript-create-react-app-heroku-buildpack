@@ -56,14 +56,14 @@ then
   herokuEcho "LS FOR FUN?"
   herokuEcho "LS FOR FUN?"
   herokuEcho "LS FOR FUN?"
-  ls $CACHE_DIR/node_modules
+  ls $CACHE_DIR/node_modules/node_modules
   herokuEcho "WAS THE LS RIGHT??"
   herokuEcho "WAS THE LS RIGHT??"
   herokuEcho "WAS THE LS RIGHT??"
   herokuEcho "Gona try nm/nm lol"
 
   cp -r "$CACHE_DIR/node_modules/node_modules" "$BUILD_DIR/bar/node_modules"
-  
+
   herokuEcho "Copied them into /bar's node moddies! ⏩ ⏩ ⏩"
 else
   needsToInstallNodeModules=1;
