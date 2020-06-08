@@ -48,7 +48,7 @@ herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 # =====================================================
 
 needsToInstallNodeModules=0;
-herokuEcho "Checking to see if the node_modules cache needs to be updated... 🎒 👀"
+herokuEcho "Checking to see if the node_modules cache are there to be updated... 🎒 👀"
 if [ -d "$CACHE_DIR/node_modules" ]
 then
   herokuEcho "Found em! 🕵🏻‍♂️ Node modules be chillin in 'ere!"
@@ -67,8 +67,11 @@ then
   yarn install 2>&1
   herokuEcho "Okay that's done! 🌈 📚"
   herokuEcho "Copying the new moddies into the cache dir! 🎒"
+  herokuEcho "LISTING $BUILD_DIR/bar/node_modules"
+  ls $BUILD_DIR/bar/node_modules
+  herokuEcho "WAS THAT RIGHT? $BUILD_DIR/bar/node_modules"
   mkdir -p "$CACHE_DIR/node_modules"
-  cp -r "$BUILD_DIR/bar/node_modules/*" "$CACHE_DIR/node_modules"
+  cp -r "$BUILD_DIR/bar/node_modules" "$CACHE_DIR/node_modules"
   herokuEcho "Copied them to cache for next time! 📄 ⏩ ⏩ ⏩ 🎒"
 fi
 
