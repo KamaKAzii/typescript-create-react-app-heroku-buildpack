@@ -37,6 +37,14 @@ herokuEcho "NPX version: $(npx -v)"
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 # ====================================
+# Time to build! 👷🏿‍♀️ 👷🏻‍♂️ 🛠 🏡 💃🏿
+# ====================================
+
+herokuEcho "Running npm build script... 🏃🏻‍♂️"
+cd bar
+npm run build 2>&1
+
+# ====================================
 # Set 🛣 in the slug 🐌
 # ====================================
 
