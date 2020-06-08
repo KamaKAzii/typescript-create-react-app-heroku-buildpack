@@ -79,10 +79,8 @@ fi
 # Time to build! 👷🏿‍♀️ 👷🏻‍♂️ 🛠 🏡 💃🏿 🍻
 # =====================================================
 
-
 herokuEcho "Now I'll run the build... 🏃🏻‍♂️"
 yarn run build 2>&1
-
 
 # =====================================================
 # Set 🛣 in the slug 🐌
@@ -92,6 +90,4 @@ herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
 scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
 touch $scripts
-herokuEcho "ABS YARN PATH:..."
-herokuEcho "$(which yarn)"
-echo "export PATH=\"\$HOME/.yarn/bin:\$HOME/.config/yarn/global/node_modules/.bin:\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
+echo "export PATH=\"\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
