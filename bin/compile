@@ -31,18 +31,19 @@ herokuEcho "Successfully fetched NodeJS 🍢 🌈"
 herokuEcho $absoluteNodePath
 PATH="$absoluteNodePath:$PATH"
 herokuEcho $PATH
-herokuEcho "IS THE PATH RIGHT? UP DERE?"
-
-herokuEcho "Successfully added node to PATH 🛣 🍢 🌈"
-
-herokuEcho "Checking node works from PATH 🛣..."
+herokuEcho "Added node to PATH 🛣 🍢 🌈"
+herokuEcho "Checking nodejs/npm/npx works from PATH 🛣..."
 herokuEcho "NodeJS version: $(node -v)"
+herokuEcho "NPM version: $(npm -v)"
+herokuEcho "NPX version: $(npx -v)"
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 # ====================================
-# Get the PATH setup for the dynos! 🧨
+# Set 🛣 in the slug 🐌
 # ====================================
 
 herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
-echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
+scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
+touch $scripts
+echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $scriptss
