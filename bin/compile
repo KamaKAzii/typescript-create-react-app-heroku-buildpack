@@ -40,4 +40,5 @@ herokuEcho "What's in there... nodejs.sh"
 cat $BUILD_DIR/.profile.d/nodejs.sh
 herokuEcho "DID THAT DO WAHT WE THOUGHT? hmm..."
 herokuEcho "What is home in here...: $HOME"
+herokuEcho "What is build_dir in here...: $BUILD_DIR"
 herokuEcho "Much to think about"
