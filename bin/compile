@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BUILD_DIR=$1
+CACHE_DIR=$2
 
 herokuEcho () { 
   echo "-----> $1"
@@ -13,26 +14,29 @@ herokuEcho "============================================"
 herokuEcho "============================================"
 
 # ====================================
-# Let's get NodeJS goin'! 🍢
+# Let's get NodeJS and Yarn goin'! 🍢
 # ====================================
 
 herokuEcho "About to get NodeJS 🍢"
 
 relativeNodePackageDir="bin/node"
-nodePathWithinPackage="bin"
 nodeDownloadDir="$BUILD_DIR/$relativeNodePackageDir"
-absoluteNodePath="$nodeDownloadDir/$nodePathWithinPackage"
-
+absoluteNodePath="$nodeDownloadDir/bin"
 mkdir -p $nodeDownloadDir
 curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeDownloadDir
 
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
-
 PATH="$absoluteNodePath:$PATH"
 herokuEcho "Added node to PATH 🛣 🍢 🌈"
 herokuEcho "Checking nodejs/npm/npx works from PATH 🛣..."
 herokuEcho "NodeJS version: $(node -v)"
 herokuEcho "NPM version: $(npm -v)"
+
+curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
+
+herokuEcho "I think we just installed yarn...: $(yarn -v) 📦"
+herokuEcho "which yarn: $(which yarn)"
+
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 # ====================================
@@ -47,6 +51,12 @@ herokuEcho "Now I'll run the build... 🏃🏻‍♂️"
 npm run build 2>&1
 
 # ====================================
+# Update dat node_modules cache! 🎒
+# ====================================
+herokuEcho "Checking to see if the node_modules cache needs to be updated... 🎒 👀"
+
+
+# ====================================
 # Set 🛣 in the slug 🐌
 # ====================================
 
@@ -54,4 +64,4 @@ herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
 scripts=$BUILD_DIR/.profile.d/cra-ts-buildpack-slug-scripts.sh
 touch $scripts
-echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $scripts
+echo "export PATH=\"\$HOME/$relativeNodePackageDir/bin:\$PATH\"" > $scripts
