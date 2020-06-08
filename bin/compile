@@ -36,3 +36,6 @@ herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$nodePath:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
+herokuEcho "What's in there... nodejs.sh"
+cat $BUILD_DIR/.profile.d/nodejs.sh
+herokuEcho "DID THAT DO WAHT WE THOUGHT?"
