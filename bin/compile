@@ -44,7 +44,9 @@ herokuEcho "Running npm build script... 🏃🏻‍♂️"
 herokuEcho "\$PWD:"
 herokuEcho $PWD
 herokuEcho "\ls:"
-herokuEcho ls
+ls
+herokuEcho "WAS THE CONTENTS OF THIS ls WHAT YOU THOUGHT IT WOULD BE?"
+
 cd bar
 npm run build 2>&1
 
