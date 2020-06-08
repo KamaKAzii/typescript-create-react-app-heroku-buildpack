@@ -41,7 +41,10 @@ herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 # ====================================
 
 herokuEcho "Running npm build script... 🏃🏻‍♂️"
-echo $PWD
+herokuEcho "\$PWD:"
+herokuEcho $PWD
+herokuEcho "\ls:"
+herokuEcho ls
 cd bar
 npm run build 2>&1
 
