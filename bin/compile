@@ -45,6 +45,10 @@ herokuEcho "\$PWD:"
 herokuEcho $PWD
 herokuEcho "\ls:"
 ls
+herokuEcho "running cd \$BUILD_DIR"
+cd $BUILD_DIR
+herokuEcho "\ls:"
+ls
 herokuEcho "WAS THE CONTENTS OF THIS ls WHAT YOU THOUGHT IT WOULD BE?"
 
 cd bar
