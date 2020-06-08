@@ -16,7 +16,8 @@ mkdir -p $nodeBaseDir
 curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeBaseDir
 nodePath="$nodeBaseDir/bin"
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
-export PATH=$PATH:$HOME/vendor/bin
+
+PATH="$nodePath:$PATH"
 herokuEcho "Successfully added node to PATH 🛣 🍢 🌈"
 herokuEcho "Checking node works from PATH 🛣..."
 herokuEcho "NodeJS version: $(node -v)"
