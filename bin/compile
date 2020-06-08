@@ -30,5 +30,9 @@ herokuEcho "NodeJS version: $(node -v)"
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 # ====================================
-# What to do next...
+# Get the PATH setup for the dynos! 🧨
 # ====================================
+
+
+mkdir -p $BUILD_DIR/.profile.d
+echo "export PATH=\"\$nodePath:\$PATH\"" > $BUILD_DIR/.profile.d/cra-ts-buikdpack.sh
