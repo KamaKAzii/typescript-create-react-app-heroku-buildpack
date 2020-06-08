@@ -11,4 +11,12 @@ herokuEcho "About to get NodeJS 🍢"
 nodeDir=$BUILD_DIR/bin/node
 mkdir -p $nodeDir
 curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xvJf - -C $nodeDir
+
+herokuEcho "Successfully fetched and 
 herokuEcho $($nodeDir/bin/node -v)
+
+herokuEcho "Current path 🛣"
+herokuEcho $PATH
+herokuEcho "Adding NodeJS 🍢 to path 🛣..."
+PATH="$nodeDir:$PATH"
+herokuEcho $PATH
