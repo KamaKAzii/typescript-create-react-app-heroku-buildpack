@@ -25,6 +25,8 @@ curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --
 
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
 
+echo "$absoluteNodePath"
+
 PATH="$absoluteNodePath:$PATH"
 herokuEcho "Successfully added node to PATH 🛣 🍢 🌈"
 herokuEcho "Checking node works from PATH 🛣..."
