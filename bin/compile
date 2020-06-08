@@ -18,10 +18,13 @@ herokuEcho "============================================"
 
 herokuEcho "About to get NodeJS 🍢"
 
-relativeNodePath="bin/node"
-absoluteNodePath="${BUILD_DIR}/${relativeNodePath}"
-mkdir -p $absoluteNodePath
-curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $absoluteNodePath
+relativeNodePackageDir="bin/node"
+nodeDownloadDir="${BUILD_DIR}/{$relativeNodePackageDir}"
+nodePathWithinPackage="bin"
+absoluteNodePath="${nodeDownloadDir}/${nodePathWithinPackage}"
+
+mkdir -p $nodeDownloadDir
+curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeDownloadDir
 
 herokuEcho "Successfully fetched NodeJS 🍢 🌈"
 
@@ -42,4 +45,4 @@ herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 herokuEcho "Time to add to the 🐌's path..."
 mkdir -p $BUILD_DIR/.profile.d
-echo "export PATH=\"\$HOME/$relativeNodePath:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
+echo "export PATH=\"\$HOME/$relativeNodePackageDir/$nodePathWithinPackage:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
