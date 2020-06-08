@@ -37,21 +37,14 @@ herokuEcho "NPX version: $(npx -v)"
 herokuEcho "Yay! Good work Buildpack! Go you! ⭐️⭐️⭐️⭐️⭐️"
 
 # ====================================
-# Time to build! 👷🏿‍♀️ 👷🏻‍♂️ 🛠 🏡 💃🏿
+# Time to build! 👷🏿‍♀️ 👷🏻‍♂️ 🛠 🏡 💃🏿 🍻
 # ====================================
 
-herokuEcho "Running npm build script... 🏃🏻‍♂️"
-herokuEcho "\$PWD:"
-herokuEcho $PWD
-herokuEcho "\ls:"
-ls
-herokuEcho "running cd \$BUILD_DIR"
-cd $BUILD_DIR
-herokuEcho "\ls:"
-ls
-herokuEcho "WAS THE CONTENTS OF THIS ls WHAT YOU THOUGHT IT WOULD BE?"
-
-cd bar
+cd "$BUILD_DIR/bar"
+herokuEcho "Installing node_module deps... 🏃🏻‍♂️"
+npm install 2>&1
+herokuEcho "Okay that's done! 🌈 📚"
+herokuEcho "Now I'll run the build... 🏃🏻‍♂️"
 npm run build 2>&1
 
 # ====================================
