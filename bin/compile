@@ -32,7 +32,9 @@ herokuEcho "Checking nodejs/npm/npx works from PATH 🛣..."
 herokuEcho "NodeJS version: $(node -v)"
 herokuEcho "NPM version: $(npm -v)"
 
+touch ~/.bashrc
 curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
+source ~/.bashrc
 
 herokuEcho "I think we just installed yarn...: $(yarn -v) 📦"
 herokuEcho "which yarn: $(which yarn)"
