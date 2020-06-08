@@ -19,9 +19,9 @@ herokuEcho "============================================"
 herokuEcho "About to get NodeJS 🍢"
 
 relativeNodePackageDir="bin/node"
-nodeDownloadDir="${BUILD_DIR}/{$relativeNodePackageDir}"
+nodeDownloadDir="$BUILD_DIR/$relativeNodePackageDir"
 nodePathWithinPackage="bin"
-absoluteNodePath="${nodeDownloadDir}/${nodePathWithinPackage}"
+absoluteNodePath="$nodeDownloadDir/$nodePathWithinPackage"
 
 mkdir -p $nodeDownloadDir
 curl -s https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz | tar --strip-components=1 -xJf - -C $nodeDownloadDir
